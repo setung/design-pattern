@@ -1,3 +1,7 @@
+import decorator.beverage.Americano;
+import decorator.beverage.Beverage;
+import decorator.beverage.Cream;
+import decorator.beverage.Shot;
 import decorator.coffee.Base;
 import decorator.coffee.Espresso;
 import decorator.coffee.IBeverage;
@@ -27,7 +31,18 @@ public class Main {
 //        proxyTest2();
         //proxyTest3();
 //        decoratorTest2();
-        singletonTest();
+//        singletonTest();
+        decorator();
+    }
+
+    static void decorator() {
+        Beverage beverage = new Americano();
+        beverage = new Shot(beverage);
+        beverage = new Shot(beverage);
+        beverage = new Cream(beverage);
+
+        System.out.println("메뉴 : " + beverage.getDescription());
+        System.out.println("가격 : " + beverage.cost());
     }
 
     static void singletonTest() {
